@@ -1,0 +1,12 @@
+node_modules/
+dist/
+release/
+.DS_Store
+*.log
+
+server/data/
+.env
+webapp/node_modules/
+webapp/dist/
+webapp/public/engine/
+server/node_modules/

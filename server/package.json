@@ -1,0 +1,7 @@
+{
+  "name": "chess-arena-multiplayer-server",
+  "version": "1.2.7",
+  "private": true,
+  "scripts": { "start": "node server.cjs" },
+  "dependencies": { "chess.js": "1.4.0", "ws": "8.18.3" }
+}

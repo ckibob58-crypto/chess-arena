@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: chess-arena-multiplayer
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: chess-arena-accounts
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: CHESS_ARENA_SECRET
+        generateValue: true
+      - key: CHESS_ARENA_DATA_DIR
+        value: /var/data
+      - key: CHESS_ARENA_CORS_ORIGIN
+        value: "*"

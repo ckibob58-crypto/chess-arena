@@ -1,0 +1,38 @@
+name: Build Chess Arena for Apple Silicon
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  build-macos-arm64:
+    # GitHub's macos-15 standard runner is Apple Silicon (arm64).
+    runs-on: macos-15
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies and Stockfish WebAssembly files
+        run: npm install
+
+      - name: Build Apple Silicon DMG
+        run: npm run dist:mac-arm64
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: Chess-Arena-macOS-Apple-Silicon-arm64
+          path: release/*.dmg
+          if-no-files-found: error
+          retention-days: 14

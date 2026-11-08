@@ -1,0 +1,22 @@
+{
+  "name": "chess-arena-web-client",
+  "version": "1.2.7",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/copy-engine.mjs",
+    "copy:engine": "node scripts/copy-engine.mjs",
+    "dev": "vite --host 127.0.0.1 --port 8173 --strictPort",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "chess.js": "1.4.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "5.0.4",
+    "vite": "7.1.12",
+    "stockfish": "19.0.1"
+  }
+}
